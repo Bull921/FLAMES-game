@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLAMES game</title>
+</head>
+<style>
+    body{
+        background-image: url(img.jpg);
+        background-size: 100%;
+    }
+    .main{
+        margin: 7cm ;
+        margin-top: 4.5cm;
+        text-align: center;
+    }
+    input{
+        margin-right: 1cm;
+        height: 1cm;
+        width: 5cm;
+        border-radius: 10%;
+        box-shadow: 0 8px 18px rgb(192, 6, 6);
+        color: rgb(11, 148, 11);
+        font-size: 0.5cm;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    button{
+        height: 0.7cm;
+        width: 3cm;
+        margin-right: 0.7cm;
+        background-color:rgb(232, 243, 74);
+    }
+
+    h1{
+        font-size: 1.5cm;
+        color: rgb(192, 6, 6);
+        font-family:cursive;
+    }
+    h2{
+        font-size: 1cm;
+        color: rgb(11, 148, 11);
+        margin: 0;
+    }
+    h3{
+        color: rgb(192, 6, 6);
+    }
+    h5{
+        margin-right: 2cm;
+        border: 2px dotted red;
+        padding: 5px;
+        box-shadow: 0 8px 18px rgb(192, 6, 6);
+    }
+
+</style>
+
+<body>
+    <div class="main">
+        <form action=""></form>
+        <h1>FLAMES CALCULATOR</h1>
+        <h5>FLAMES stands for - F riends, L over, A ffection, M arriage, E nemy, S ister. If you are in love with someone,
+             and if you would like to test the love compatibility between him/her then take this Flames Game.
+             Just enter your name and your partner name and then click on Calculate</h5>
+        <h3 style="color: black;">Enter the names :</h3>
+        <input type="text" id="val1" type="text">
+        <input type="text" id="val2" type="text"><br>
+        <p id="demo"></p>
+        <button type="submit" onclick="fun()">Calculate</button>
+        <button type="submit" onclick="cls()">Reset</button>
+        </form>
+    </div>
+    
+    <script>
+        
+        function fun(){
+            var value1=document.getElementById("val1").value;
+            var value2=document.getElementById("val2").value;
+            if(value1=="" || value2==""){
+                alert("Enter names");
+            }else{
+            var fas=value1;
+            var sec=value2;
+    
+            for(i=0;i<value1.length;i++){
+                sec=sec.replace(value1[i],'');
+            }
+            for(i=0;i<value2.length;i++){
+                fas=fas.replace(value2[i],'');
+            }
+            var num=(fas.length+sec.length);
+            var ar=["Friends","Love","Affection","Marriage","Enemy","Sister/Brother"];
+            var y=ar.length;
+    
+            for(i=0;i<5;i++){
+                var x=num%ar.length;
+                if(x==0){ar.splice(ar.length-1,1)}
+                else{ar.splice(x-1,1)}
+            }
+            document.getElementById("demo").innerHTML="<h3> The relationship between "+value1+" and "+value2+" is :</h3>"+"<br>"+"<h2>"+ar+"</h2>"; 
+        }
+    }
+
+        function cls(){
+            val1.value="";
+            val2.value="";
+            document.getElementById("demo").innerHTML="";
+        }
+    </script>
+</body>
+</html>
